@@ -25,7 +25,10 @@ export const api = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (!response.ok) throw new Error('Registration failed');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
       return response.json();
     },
 
@@ -38,7 +41,10 @@ export const api = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (!response.ok) throw new Error('Login failed');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
       return response.json();
     },
   },
@@ -50,7 +56,10 @@ export const api = {
         headers: authHeaders(),
         body: JSON.stringify({ name }),
       });
-      if (!response.ok) throw new Error('Failed to create restaurant');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
       return response.json();
     },
 
@@ -59,7 +68,10 @@ export const api = {
         method: 'GET',
         headers: authHeaders(),
       });
-      if (!response.ok) throw new Error('Failed to fetch restaurants');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
       return response.json();
     },
 
@@ -68,7 +80,10 @@ export const api = {
         method: 'GET',
         headers: authHeaders(),
       });
-      if (!response.ok) throw new Error('Failed to fetch restaurant');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
       return response.json();
     },
   },
@@ -92,7 +107,10 @@ export const api = {
           body: JSON.stringify(data),
         }
       );
-      if (!response.ok) throw new Error('Failed to create inspection');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
       return response.json();
     },
 
@@ -104,7 +122,10 @@ export const api = {
           headers: authHeaders(),
         }
       );
-      if (!response.ok) throw new Error('Failed to fetch inspections');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
       return response.json();
     },
 
@@ -116,7 +137,10 @@ export const api = {
           headers: authHeaders(),
         }
       );
-      if (!response.ok) throw new Error('Failed to fetch inspection');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
       return response.json();
     },
   },
